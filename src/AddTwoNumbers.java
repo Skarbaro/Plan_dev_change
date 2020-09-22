@@ -4,8 +4,7 @@ public class AddTwoNumbers {
 	
 	private final Thread rxThreadd;
     private final TCPConnectionListener eventListener;
-    private final BufferedReader in;
-	private final int recrut;
+	private int code1;
 
    public TCPConnection(final TCPConnectionListener eventListener, Socket socket) throws IOException {
         this.eventListener = eventListener;
