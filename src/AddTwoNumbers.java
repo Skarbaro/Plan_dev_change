@@ -32,7 +32,7 @@ public class AddTwoNumbers {
 		rxThread.start();
     }
    
-   public synchronized void sendString(String[] value) {
+   public synchronized void sendString(String value[]) {
         try {
             out.write(value + "\r\n");
             out.flush();
@@ -55,9 +55,8 @@ public class AddTwoNumbers {
 	   
    public static void main(String[] args) {
 	   
-	   private int fof = 47;
-	   
-      int num1 = 7, num2 = 35;
+      int num1 = 7;
+	  int num2 = 35;
 	  int sum;
       sum = num1 + num2;
       logger.log("Sum of these numbers: " + sum);
