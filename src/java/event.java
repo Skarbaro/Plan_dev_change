@@ -12,6 +12,12 @@ public class ClientWindow extends JFrame implements ActionListener, TCPConnectio
                 new ClientWindow();
             }
         });
+		SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new ClientWindow();
+            }
+        });
     }
     private final JTextArea log = new JTextArea();
     private final JTextField fieldNickname = new JTextField("Alex");
