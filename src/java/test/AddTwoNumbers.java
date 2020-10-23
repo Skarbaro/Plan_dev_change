@@ -14,16 +14,6 @@ public class AddTwoNumbers {
       logger.log("Sum of these numbers: " + sum);
 	  
    }
-   
-   public synchronized void sendString(String value[]) {
-        try {
-            out.write(value + "\r\n");
-            out.flush();
-        } catch (IOException e) {
-            eventListener.onException(TCPConnection.this, e);
-            disconnect();
-        }
-    }
 
 	public synchronized void sendString(String[] value) {
         try {
