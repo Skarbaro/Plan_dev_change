@@ -1,6 +1,7 @@
 public class AddTwoNumbers {
 	
-	private String cat, color;
+	int delete this;
+	
 	
 	public static void main(String args[]) {
 		int num1 = 5, num2 = 15, sum,
