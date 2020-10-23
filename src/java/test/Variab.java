@@ -2,7 +2,7 @@ package src.java.test;
 
 class Variab {
 	
-	private int adr;
+	private int adr, zen, eco;
 	
 	public static void main (String args[]) {
 		
