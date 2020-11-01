@@ -1,7 +1,6 @@
 public class AddTwoNumbers {
 	
-	int delete this;
-	int del;
+	int del, art;
 	
 	public static void main(String args[]) {
 		int num1 = 5, num2 = 15, sum,
@@ -10,7 +9,7 @@ public class AddTwoNumbers {
 	}
 	
 	public static void main(String args[]) {
-		int num1 = 5, nim2 = 17, sum,
+		int num1 = 5, nim2 = 17, sum;
 		sum = num1 + nim2;
 		System.out.println("Sum of these numbers: " + sum);
 	}
