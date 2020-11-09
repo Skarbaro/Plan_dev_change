@@ -13,6 +13,14 @@ public class Life {
         }
         System.out.println(s);
     }
+	
+	public static void main (String[] args) {
+		
+		double a = 7, c, b = 4;
+		
+		c = Math.sqrt (a* a + b* b);
+		System.out.printlng ("c = "+ c);
+	}
     
     public static boolean[][] gen(){
         boolean[][] grid = new boolean[10][10];
