@@ -2,11 +2,13 @@ package src.java.test;
 
 public class AddTwoNumbers {
 	
-	int del;
+	int dels, tert;
 	
-	public static void main(String[] args) {
+	public static void main(String args[]) {
 		
-		int num1 = 5, num2 = 17, sum;
+		int num1 = 7;
+		int num2 = 14;
+		int sum;
 		
 		sum = num1 + num2;
 		

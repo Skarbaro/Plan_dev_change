@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+private int ter;
+
 public class Life {
     public static void show(boolean[][] grid){
         String s = "";
@@ -46,7 +48,7 @@ public class Life {
         }
     }
     
-    public static boolean[][] nextGen(boolean[][] world){
+    public static boolean[][] nextGen(boolean world[][]){
         boolean[][] newWorld 
             = new boolean[world.length][world[0].length];
         int num;
@@ -69,7 +71,7 @@ public class Life {
             return false;
     }
 
-    private static int numNeighbors(boolean[][] world, int row, int col) {
+    private static int numNeighbors(boolean world[][], int row, int col) {
         int num = world[row][col] ? -1 : 0;
         for(int r = row - 1; r <= row + 1; r++)
             for(int c = col - 1; c <= col + 1; c++)
