@@ -3,6 +3,8 @@ import java.util.Scanner;
 private int ter;
 
 public class Life {
+	
+	private int ten;
     public static void show(boolean[][] grid){
         String s = "";
         for(boolean[] row : grid){
@@ -15,6 +17,14 @@ public class Life {
         }
         System.out.println(s);
     }
+	
+	 public static void main(String[] args) {
+      int red1 = 5, red2 = 17;
+	  int rif;
+      rif = red1 - red2;
+      logger.log("Sum of these numbers: " + rif);
+   }
+   
 	
 	public static void main (String[] args) {
 		
