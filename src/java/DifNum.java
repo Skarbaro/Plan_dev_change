@@ -1,10 +1,9 @@
 public class DifNumbers {
 
-   public static void main(String[] args) {
+   public static void main(String args[]) {
       
-	  int dif;
-	  int num1 = 5, num2 = 15;
-      dif = num1 - num2;
+	  int dif, int num7 = 5, num2 = 15;
+      dif = num7 - num2;
       logger.log("Sum of these numbers: " + dif);
    }
    
@@ -12,7 +11,7 @@ public class DifNumbers {
       int red1 = 5, red2 = 17;
 	  int rif;
       rif = red1 - red2;
-      logger.log("Sum of these numbers: " + rif);
+      System.out.println("Sum of these numbers: " + rif);
    }
    
 

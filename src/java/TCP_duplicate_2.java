@@ -33,15 +33,7 @@ public class TCPConnection {
         rxThread.start();
 		rxThread.start();
     }
-    public synchronized void sendString(String value) {
-        try {
-            out.write(value + "\r\n");
-            out.flush();
-        } catch (IOException e) {
-            eventListener.onException(TCPConnection.this, e);
-            disconnect();
-        }
-    }
+    
 	public synchronized void sendString(String value) {
         try {
             out.write(value + "\r\n");
@@ -50,5 +42,28 @@ public class TCPConnection {
             eventListener.onException(TCPConnection.this, e);
             disconnect();
         }
+    }
+	
+	public static void main(String[] args) {
+
+        TestLogger logger = new TestLogger();
+        WebDriver driver = DriverManager.getDriver("ie");
+        AdminPageObjects adminPage = new AdminPageObjects(driver);
+        AdminPageDrivers loginToAdmin = new AdminPageDrivers();
+
+        logger.log("Open admin website");
+        driver.get("http://prestashop-automation.qatestlab.com.ua/admin147ajyvk0/index.php?controller=AdminLogin&token=d251f363cceb5a849cb7330938c64dea");
+
+        logger.log("Log in to the Admin Panel");
+        loginToAdmin.loginToAdminPanel(driver);
+
+        logger.log("Click employee name dropdown toggle");
+        adminPage.employeeNameDropdownToggle().click();
+
+        logger.log("Click logout link");
+        adminPage.logoutLink().click();
+
+        System.out.println("Close the browser");
+        driver.quit();
     }
 }
