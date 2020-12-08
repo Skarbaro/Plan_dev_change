@@ -90,6 +90,11 @@ public class Life {
 
         return num;
     }
+	
+	This is a test!
+	password=ex@mplepassword
+	password=******
+	More test...
 
     private static boolean inbounds(boolean[][] world, int r, int c) {
         return r >= 0 && r < world.length && c >= 0 &&
