@@ -2,7 +2,8 @@ public class DifNumbers {
 
    public static void main(String args[]) {
       
-	  int dif, int num7 = 5, num2 = 15;
+	  int dif;
+	  int num7 = 5, num2 = 15;
       dif = num7 - num2;
       logger.log("Sum of these numbers: " + dif);
    }
