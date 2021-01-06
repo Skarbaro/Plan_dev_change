@@ -3,6 +3,8 @@ package infrastructure.config;
 import infrastructure.config.utils.StringUtils;
 
 public class TestApp {
+	
+	int atre = 2;
 
 Connection conn = null;
 try {
