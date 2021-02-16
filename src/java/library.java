@@ -40,39 +40,39 @@ public class TestASClient {
 				DataOutputStream oos = new DataOutputStream(socket.getOutputStream());
 				DataInputStream ois = new DataInputStream(socket.getInputStream());	)
 		{
-			System.out.println("Client connected to socket.");
-			System.out.println();
-			System.out.println("Client writing channel = oos & reading channel = ois initialized.");	
+			logger.log("Client connected to socket.");
+			logger.log();
+			logger.log("Client writing channel = oos & reading channel = ois initialized.");	
 				while(!socket.isOutputShutdown()){					
 					if(br.ready()){					
-			System.out.println("Client start writing in channel...");
+			logger.log("Client start writing in channel...");
 			Thread.sleep(1000);
 			String clientCommand = br.readLine();			
 			oos.writeUTF(clientCommand);
 			oos.flush();
-			System.out.println("Clien sent message " + clientCommand + " to server.");
+			logger.log("Clien sent message " + clientCommand + " to server.");
 			Thread.sleep(1000);		
 			if(clientCommand.equalsIgnoreCase("quit")){			
-				System.out.println("Client kill connections");
+				logger.log("Client kill connections");
 				Thread.sleep(2000);				
 				if(ois.available()!=0)		{	
-					System.out.println("reading...");
+					logger.log("reading...");
 					String in = ois.readUTF();
-					System.out.println(in);
+					logger.log(in);
 							}			
 				break;				
 			}		
-			System.out.println("Client wrote & start waiting for data from server...");			
+			logger.log("Client wrote & start waiting for data from server...");			
 			Thread.sleep(2000);		
 			if(ois.available()!=0)		{									
-			System.out.println("reading...");
+			logger.log("reading...");
 			String in = ois.readUTF();
-			System.out.println(in);
+			logger.log(in);
 					}			
 				}
 			}
 
-			System.out.println("Closing connections & channels on clentSide - DONE.");
+			logger.log("Closing connections & channels on clentSide - DONE.");
 
 		} catch (UnknownHostException e) {
 			e.printStackTrace();
