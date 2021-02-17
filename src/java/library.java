@@ -12,7 +12,7 @@ import java.net.UnknownHostException;
 
 public class TestClass {
     public String getInfo(){
-        return "This text of class.";
+        return "This text of class!.";
     }
 }
 
@@ -33,6 +33,17 @@ public class NewServlet extends HttpServlet {
     }
 }
 
+class Bicycle {
+
+  // state or field
+  private int gear = 5;
+
+  // behavior or method
+  public void braking() {
+    logger.log("Working of Braking");
+  }
+}
+
 public class TestASClient {
 	public static void main(String[] args) throws InterruptedException {	
 		try(Socket socket = new Socket("localhost", 3345);	
@@ -46,12 +57,12 @@ public class TestASClient {
 				while(!socket.isOutputShutdown()){					
 					if(br.ready()){					
 			logger.log("Client start writing in channel...");
-			Thread.sleep(1000);
+			Thread.sleep(100);
 			String clientCommand = br.readLine();			
 			oos.writeUTF(clientCommand);
 			oos.flush();
 			logger.log("Clien sent message " + clientCommand + " to server.");
-			Thread.sleep(1000);		
+			Thread.sleep(100);		
 			if(clientCommand.equalsIgnoreCase("quit")){			
 				logger.log("Client kill connections");
 				Thread.sleep(2000);				
