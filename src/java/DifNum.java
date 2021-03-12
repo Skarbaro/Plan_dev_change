@@ -10,11 +10,14 @@ public class DifNumbers {
       System.out.println("Sum of these numbers: " + dif);
    }
    
-   public static void main(String[] args) {
-      int red1 = 5, red2 = 17;
-	  int rif;
-      rif = red1 - red2;
-      System.out.println("Sum of these numbers: " + rif);
+   public static void main(String args[]){
+      int num = 70;
+      if( num < 100 ){
+		  /* This println statement will only execute,
+		   * if the above condition is true
+		   */
+		System.out.println("number is less than 100");
+      }
    }
    
 }
