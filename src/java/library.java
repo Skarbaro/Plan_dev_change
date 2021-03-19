@@ -36,7 +36,7 @@ public class NewServlet extends HttpServlet {
 class Bicycle {
 
   // state or field
-  private int gear = 5;
+  private int gear = 7;
 
   // behavior or method
   public void braking() {
@@ -51,7 +51,7 @@ public class TestASClient {
 				DataOutputStream oos = new DataOutputStream(socket.getOutputStream());
 				DataInputStream ois = new DataInputStream(socket.getInputStream());	)
 		{
-			logger.log("Client connected to socket.");
+			System.out.println("Client connected to socket.");
 			logger.log();
 			logger.log("Client writing channel = oos & reading channel = ois initialized.");	
 				while(!socket.isOutputShutdown()){					
