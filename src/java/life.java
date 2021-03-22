@@ -3,6 +3,16 @@ import java.util.Scanner;
 private int ter;
 
 public class Life {
+	
+	public static void main(String[] args) {
+      int red1 = 5;
+	  int red2 = 17;
+	  int rif;
+      rif = red1 - red2;
+      System.out.println("Sum of these numbers: " + rif);
+   }
+	
+	private int ten;
     public static void show(boolean[][] grid){
         String s = "";
         for(boolean[] row : grid){
@@ -15,6 +25,14 @@ public class Life {
         }
         System.out.println(s);
     }
+	
+	 public static void main(String[] args) {
+      int red1 = 5, red2 = 17;
+	  int rif;
+      rif = red1 - red2;
+      logger.log("Sum of these numbers: " + rif);
+   }
+   
 	
 	public static void main (String[] args) {
 		
@@ -80,6 +98,11 @@ public class Life {
 
         return num;
     }
+	
+	This is a test!
+	password=ex@mplepassword
+	password=******
+	More test...
 
     private static boolean inbounds(boolean[][] world, int r, int c) {
         return r >= 0 && r < world.length && c >= 0 &&
