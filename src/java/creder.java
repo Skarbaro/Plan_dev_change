@@ -4,7 +4,7 @@ import infrastructure.config.utils.StringUtils;
 
 public class TestApp {
 	
-	int atre = 2;
+	int atre = 25;
 
 Connection conn = null;
 try {
@@ -22,11 +22,12 @@ try {
 
 public class Characters {
 
-    public static void main(String[] args) {
+    public static void main(String args[]) {
 
-        char c;
+        int bin;
 
-        for(c = 'A'; c <= 'Z'; ++c)
-            System.out.print(c + " " + ber);
+        for(bin = 'A'; bin <= 'Z'; ++bin)
+            	
+		System.out.print(bin + " " + ber);
     }
 }
