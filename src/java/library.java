@@ -36,7 +36,7 @@ public class NewServlet extends HttpServlet {
 class Bicycle {
 
   // state or field
-  private int gear = 7;
+  private int gear = 9;
 
   // behavior or method
   public void braking() {
