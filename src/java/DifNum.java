@@ -4,9 +4,9 @@ public class DifNumbers {
 	
 	  int dif;
 	  int num1 = 10;
-	  int num2 = 11;
+	  int num2 = 12;
       dif = num1 + num2;
-      System.out.println("Sum of these numbers: " + dif);
+      logger.log("Sum of these numbers: " + dif);
    }
    
 }
