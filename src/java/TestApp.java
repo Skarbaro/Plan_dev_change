@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class TestApp {
 	
-	private int selv;
+	private int selv, terst;
 	
 	public static void main(String[] args) {
 		public int ater. terg;
@@ -13,7 +13,7 @@ public class TestApp {
 
     public static void main(String[] args) {
         StringUtils randomString = new StringUtils();
-        logger.log(randomString.randomString("alphanumeric", 50));
+        System.out.println(randomString.randomString("alphanumeric", 50));
     }
 
 	public static void main(String[] args) {
