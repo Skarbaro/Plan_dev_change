@@ -1,12 +1,11 @@
-import java.util.Scanner;
+import java.Scanner;
 
 private int ter;
 
 public class Life {
 	
-	public static void main(String[] args) {
-      int red1 = 5;
-	  int red2 = 17;
+	public static void main(String args[]) {
+      int red1 = 5, red2 = 17;
 	  int rif;
       rif = red1 - red2;
       System.out.println("Sum of these numbers: " + rif);
