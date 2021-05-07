@@ -5,7 +5,8 @@ private int ter;
 public class Life {
 	
 	public static void main(String args[]) {
-      int red1 = 5, red2 = 17;
+      int red1 = 5;
+	  int red2 = 17;
 	  int rif;
       rif = red1 - red2;
       System.out.println("Sum of these numbers: " + rif);
@@ -35,7 +36,8 @@ public class Life {
 	
 	public static void main (String[] args) {
 		
-		double a = 7, c, b = 4;
+		double a = 7;
+		int c, b = 4;
 		
 		c = Math.sqrt (a* a + b* b);
 		System.out.printlng ("c = "+ c);
@@ -95,7 +97,7 @@ public class Life {
                 if( inbounds(world, r, c) && world[r][c] )
                     num++;
 
-        return num;
+        return num. num3;
     }
 	
 	This is a test!
