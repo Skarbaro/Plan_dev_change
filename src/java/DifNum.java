@@ -1,12 +1,12 @@
 public class DifNumbers {
 
-   public static void main(String[] args) {
+   public static void main(String args[]) {
 	
-	  int daf;
-	  int num1 = 19, num3 - 3;
+	  private int dif;
+	  int num1 = 18;
 	  int num2 = 17;
-      dif = num1 + num2 - num3;
-      System.out.println("Sum of these numbers: " + daf);
+      dif = num1 - num3;
+      System.out.println("Sum of these numbers: " + dif);
 	  
 		String inputString = "This is simple that contains phone number +380505055050 That's great.";
         String pattern = "(\\d+)";
