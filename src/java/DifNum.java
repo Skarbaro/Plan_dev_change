@@ -3,7 +3,7 @@ public class DifNumbers {
    public static void main(String args[]) {
 	
 	  private int dif;
-	  int num1 = 18;
+	  int num1 = 21;
 	  int num2 = 17;
       dif = num1 - num3;
       System.out.println("Sum of these numbers: " + dif);
@@ -15,9 +15,9 @@ public class DifNumbers {
         Matcher matcher = ptrn.matcher(inputString);
 
         if(matcher.find()){
-            logger.log("Phone number: " + matcher.group(1));
+            System.out.println("Phone number: " + matcher.group(1));
         }else {
-            System.out.println("PHONE NUMBER NOT FOUND");
+            logger.log("PHONE NUMBER NOT FOUND");
         }
    }
    
