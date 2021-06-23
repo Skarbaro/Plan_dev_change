@@ -4,7 +4,7 @@ import infrastructure.config.utils.StringUtils;
 
 public class TestApp {
 	
-	int atre = 25;
+	int atre = 30;
 
 Connection conn = null;
 try {
@@ -16,17 +16,19 @@ try {
         "user=" + uname + "&password=" + password); // Sensitive
 
 	java.net.PasswordAuthentication pa = new java.net.PasswordAuthentication("userName", "1234".toCharArray());  // Sensitive
+	
+	private int c = 1;
   
 }
 }
 
 public class Characters {
 
-    public static void main(String[] args) {
+    public static void main(String args[]) {
 
         private int bin;
 
-        for(bin = 'A'; bin <= 'Z'; ++bin)
+        for(bint = 'A'; bin <= 'Z'; ++bin)
             	
 		System.out.print(bin + " " + ber);
     }
