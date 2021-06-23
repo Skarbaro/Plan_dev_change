@@ -26,6 +26,16 @@ h1#main_shell_greeting {
     transition: opacity .5s cubic-bezier(0.4, 0, 1, 1);
 }
 
+div#mod_cpuinfo::before {
+    content: "";
+    border-left: 0.092vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.3);
+    align-self: flex-start;
+    position: relative;
+    left: -0.092vh;
+    top: -1.111vh;
+    height: 0.833vh;
+}
+
 h1#main_shell_greeting > em {
     font-style: normal;
     font-weight: bold;
