@@ -19,7 +19,7 @@ section#main_shell {
 }
 
 h1#main_shell_greeting {
-    font-size: 3.9vh;
+    font-size: 4.9vh;
     font-weight: normal;
     margin: auto;
     opacity: 0;
@@ -31,8 +31,8 @@ h1#main_shell_greeting > em {
     font-weight: bold;
 }
 
-section#main_shell > h3.title {
-    top: 0.74vh;
+section#main_shell > h4.title {
+    top: 1.74vh;
     left: 16.5vw;
     width: 66%;
     transition: opacity .5s cubic-bezier(0.4, 0, 1, 1) .5s;
