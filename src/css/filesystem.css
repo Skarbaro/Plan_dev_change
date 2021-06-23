@@ -6,7 +6,7 @@ section#filesystem {
     margin-right: 0.5vw;
 
     opacity: 0;
-    transition: opacity .5s cubic-bezier(0.4, 0, 1, 1);
+    transition: opacity .5s cubic-bezier(0.4, 0, 3, 1);
 }
 
 section#filesystem > h3.title {
@@ -20,22 +20,8 @@ section#filesystem.hideDotfiles > h3.title > p#fs_disp_title_dir::before {
 
 h2#fs_disp_error {
     font-weight: bold;
-    text-align: center;
+    text-align: left;
     padding-top: 12vh;
-}
-
-div#fs_disp_container {
-    position: relative;
-    left: .35vw;
-    top: 1.5vh;
-    height: 25.5vh;
-    width: 43vw;
-    overflow: auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(8.5vh, 1fr));
-    grid-auto-rows: 8.5vh;
-    grid-gap: 1vh;
-    box-sizing: border-box;
 }
 
 div#fs_disp_container > * {
@@ -77,7 +63,7 @@ section#filesystem.hideDotfiles > div#fs_disp_container > *.hidden {
 }
 
 div#fs_disp_container > * > svg {
-    width: 5vh;
+    width: 7vh;
 }
 
 /* Add padding around non-edex icons */
@@ -88,7 +74,7 @@ div#fs_disp_container > * > svg:not([viewBox="0 0 24 24"]) {
 
 div#fs_disp_container > * > h3 {
     font-size: 1.3vh;
-    max-width: 100%;
+    max-width: 90%;
     max-height: 30%;
     margin: 0px;
     padding-top: .5vh;
@@ -96,35 +82,6 @@ div#fs_disp_container > * > h3 {
     white-space: nowrap;
     text-overflow: ellipsis;
     overflow: hidden;
-}
-
-section#filesystem:not(.list-view) > div#fs_disp_container > div > h4 {
-    display: none;
-}
-
-div#fs_disp_container.disks > div > h4 {
-	  display: none;
-}
-
-section#filesystem.list-view > div#fs_disp_container {
-    grid-template-columns: 1fr;
-    grid-auto-rows: 2vh;
-    grid-gap: 0.5vh;
-    padding-right: 0.5vh;
-}
-
-section#filesystem.list-view > div#fs_disp_container:not(.disks) > * {
-    width: auto;
-    height: 2vh;
-    flex-direction: row;
-    justify-content: flex-start;
-}
-
-section#filesystem.list-view > div#fs_disp_container:not(.disks) > div > svg {
-    height: 2vh;
-    margin: 0;
-    width: auto;
-    margin-right: 2%;
 }
 
 section#filesystem.list-view > div#fs_disp_container:not(.disks) > div > h3 {

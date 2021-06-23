@@ -7,3 +7,15 @@ div#mod_netstat {
     padding-top: 0.645vh;
     display: flex;
 }
+
+div#mod_netstat_inner > h1:first-child > i {
+    font-style: normal;
+    font-size: 1.20vh;
+    opacity: 0.5;
+    text-align: right;
+    display: inline-block;
+    position: relative;
+    bottom: 1.6vh;
+    right: 0.3vw;
+    width: 100%;
+}
