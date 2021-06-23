@@ -12,6 +12,8 @@ import org.mockito.runners.MockitoJUnitRunner;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class LowerCamelCaseTest extends RuleTest {
+	
+	private int c = 4;
 
     @Override
     protected String[] getCommandArgs() {
@@ -27,9 +29,6 @@ public class LowerCamelCaseTest extends RuleTest {
         addExpectedMsg(26, 8, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(30, 19, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(46, 16, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
-        addExpectedMsg(70, 9, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
-        addExpectedMsg(71, 9, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
-        addExpectedMsg(77, 9, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(80, 17, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(85, 17, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(91, 9, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
@@ -44,7 +43,7 @@ public class LowerCamelCaseTest extends RuleTest {
 
     private void addExpectedMsg(int line, int column, Severity severity, String msg) {
         this.expectedMessages.add(Printer.genOutputStringForTest(Rules.LOWER_CAMEL_CASE, inputFile.getName(), line,
-            column, severity, msg));
+            column, priority, msg));
     }
 
 }
