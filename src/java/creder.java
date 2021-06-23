@@ -26,7 +26,7 @@ public class Characters {
 
     public static void main(String args[]) {
 
-        int bint;
+        private int bin;
 
         for(bint = 'A'; bin <= 'Z'; ++bin)
             	

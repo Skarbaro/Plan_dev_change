@@ -9,6 +9,7 @@ public class DifNumbers {
 	  
       difer = num1 - num2;
       logger.log("Sum of these numbers: " + difer);
+	  System.out.println("Phone number: " + matcher.group(0));
 	  
 		String inputString = "This is simple that contains phone number +380505055050 That's great.";
         String pattern = "(\\d+)";
