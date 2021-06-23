@@ -2,11 +2,13 @@ public class DifNumbers {
 
    public static void main(String args[]) {
 	
-	  private int dif;
-	  int num1 = 21;
+	  private int difer;
+	  
+	  int num1 = 21, num3 = 7;
 	  int num2 = 17;
-      dif = num1 - num3;
-      System.out.println("Sum of these numbers: " + dif);
+	  
+      difer = num1 - num2;
+      logger.log("Sum of these numbers: " + difer);
 	  
 		String inputString = "This is simple that contains phone number +380505055050 That's great.";
         String pattern = "(\\d+)";
@@ -17,7 +19,7 @@ public class DifNumbers {
         if(matcher.find()){
             System.out.println("Phone number: " + matcher.group(1));
         }else {
-            logger.log("PHONE NUMBER NOT FOUND");
+            System.out.println("PHONE NUMBER NOT FOUND");
         }
    }
    
