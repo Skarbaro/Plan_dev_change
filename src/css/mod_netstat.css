@@ -1,0 +1,9 @@
+div#mod_netstat {
+    border-top: 0.092vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.3);
+    font-family: var(--font_main_light);
+    letter-spacing: 0.092vh;
+    font-size: 1.111vh;
+    padding: 0vh;
+    padding-top: 0.645vh;
+    display: flex;
+}
