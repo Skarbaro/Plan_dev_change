@@ -28,7 +28,7 @@ public class Characters {
 
         private int bin;
 
-        for(bint = 'A'; bin <= 'Z'; ++bin)
+        for(bint = 'B'; bin <= 'Z'; ++bin)
             	
 		System.out.print(bin + " " + ber);
     }

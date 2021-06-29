@@ -31,16 +31,6 @@ public class AddTwoNumbers {
         rxThread.start();
 		rxThread.start();
     }
-   
-   public synchronized void sendString(String[] value) {
-        try {
-            out.write(value + "\r\n");
-            out.flush();
-        } catch (IOException e) {
-            eventListener.onException(TCPConnection.this, e);
-            disconnect();
-        }
-    }
 
 	public synchronized void sendString(String value) {
         try {
