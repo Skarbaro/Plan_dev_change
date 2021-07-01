@@ -3,7 +3,6 @@ package com.sleekbyte.tailor.functional;
 import com.sleekbyte.tailor.common.Messages;
 import com.sleekbyte.tailor.common.Rules;
 import com.sleekbyte.tailor.common.Severity;
-import com.sleekbyte.tailor.output.Printer;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -13,7 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class LowerCamelCaseTest extends RuleTest {
 	
-	private int c = 4;
+	private int c = 7, a = 11;
 
     @Override
     protected String[] getCommandArgs() {
@@ -27,11 +26,6 @@ public class LowerCamelCaseTest extends RuleTest {
         addExpectedMsg(16, 14, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(20,22, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(26, 8, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
-        addExpectedMsg(30, 19, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
-        addExpectedMsg(46, 16, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
-        addExpectedMsg(80, 17, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
-        addExpectedMsg(85, 17, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
-        addExpectedMsg(91, 9, Severity.WARNING, Messages.VARIABLE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(163, 8, Severity.WARNING, Messages.ENUM_CASE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(164, 8, Severity.WARNING, Messages.ENUM_CASE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
         addExpectedMsg(165, 8, Severity.WARNING, Messages.ENUM_CASE + Messages.NAMES + Messages.LOWER_CAMEL_CASE);
