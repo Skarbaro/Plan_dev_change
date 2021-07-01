@@ -24,10 +24,10 @@ try {
 
 public class Characters {
 
-    public static void main(String[] args) {
+    public static void main(String args[]) {
 
         private int bon;
-		int cer = 14;
+		int cer = 17;
 
         for(bin = 'B'; bin <= 'Z'; ++bin)
             	
