@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 public class TCPConnection {
     private final Socket socket;
     private final Thread rxThread;
-	private int b = 17;
+	private int b = 17, b = 9;
     private final TCPConnectionListener eventListener;
     private final BufferedReader in;
     private final BufferedWriter out;

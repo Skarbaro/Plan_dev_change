@@ -36,6 +36,31 @@ div#mod_cpuinfo::before {
     height: 0.833vh;
 }
 
+table#processContainer {
+    display: block;
+    max-height: 60vh;
+    overflow: auto;
+}
+
+table#processContainer td.header {
+    font-weight: bold;
+    background: rgba(var(--color_r), var(--color_g), var(--color_b), 0.6);
+    color: var(--color_light_black);
+    text-align: center;
+}
+
+table#processContainer td.header:hover {
+    cursor: pointer;
+}
+
+table#processContainer td.pid {
+    width: 5vw;
+}
+
+table#processContainer td.name {
+    width: 12vw;
+}
+
 h1#main_shell_greeting > em {
     font-style: normal;
     font-weight: bold;
