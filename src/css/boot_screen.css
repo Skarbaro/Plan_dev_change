@@ -9,7 +9,7 @@ section#boot_screen {
     overflow: hidden;
 
     font-family: monospace;
-    font-size: 1.4vh;
+    font-size: 1.7vh;
     text-align: left;
     display: flex;
     align-items: flex-end;
@@ -18,7 +18,7 @@ section#boot_screen {
 
 section#boot_screen.center {
     align-items: center;
-    justify-content: center;
+    justify-content: left;
 }
 
 section#boot_screen h1 {
@@ -75,6 +75,14 @@ section#boot_screen h1.glitch::before {
 @keyframes derezzer_top {
     from {transform: translateY(100%) translateX(-1%);}
     to {transform: translateY(100%) translateX(-5%);}
+}
+
+div.body p.caption {
+    text-align: inherit;
+}
+
+div.body td {
+    text-align: left;
 }
 
 section#boot_screen h1::after {

@@ -2,9 +2,9 @@ div#mod_netstat {
     border-top: 0.092vh solid rgba(var(--color_r), var(--color_g), var(--color_b), 0.3);
     font-family: var(--font_main_light);
     letter-spacing: 0.092vh;
-    font-size: 1.111vh;
+    font-size: 1.121vh;
     padding: 0vh;
-    padding-top: 0.645vh;
+    padding-top: 0.675vh;
     display: flex;
 }
 
@@ -18,4 +18,17 @@ div#mod_netstat_inner > h1:first-child > i {
     bottom: 1.6vh;
     right: 0.3vw;
     width: 100%;
+}
+
+h1:hover > a.headerlink,
+h2:hover > a.headerlink,
+h3:hover > a.headerlink,
+h4:hover > a.headerlink,
+h5:hover > a.headerlink,
+h6:hover > a.headerlink,
+dt:hover > a.headerlink,
+caption:hover > a.headerlink,
+p.caption:hover > a.headerlink,
+div.code-block-caption:hover > a.headerlink {
+    visibility: visible;
 }

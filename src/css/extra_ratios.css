@@ -6,7 +6,7 @@
 
     div.keyboard_key {
         height: 2.5vw;
-        min-width: 2.5vw;
+        min-width: 9.5vw;
     }
     div.keyboard_row:last-child {
         left: 0.8vh;
@@ -28,8 +28,8 @@
     }
 
     /* See #317 */
-    section.mod_column {
-        width: 17.5%;
+    section.mod_colum {
+        width: 17.7%;
     }
     div#mod_toplist i {
         font-size: 1.10vh;
