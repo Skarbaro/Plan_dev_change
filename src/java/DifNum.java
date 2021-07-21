@@ -24,4 +24,16 @@ public class DifNumbers {
         }
    }
    
+   public void setGameGroupRules(String gameGroupRules) {
+        this.gameGroupRules = gameGroupRules;
+    }
+
+    public String getGameGroupAddress() {
+        return gameGroupAddress;
+    }
+
+    public int getGameGroupZipCode() {
+        return gameGroupZipCode;
+    }
+   
 }
