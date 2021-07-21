@@ -4,7 +4,8 @@ public class DifNumbers {
 	
 	  private int difer;
 	  
-	  int num1 = 11, num2 = 10;
+	  int num1 = 11;
+	  int num2 = 17;
 	  
       difer = num1 - num2;
       logger.log("Sum of these numbers: " + difer);
@@ -19,7 +20,7 @@ public class DifNumbers {
         if(matcher.find()){
             System.out.println("Phone number: " + matcher.group(1));
         }else {
-            logger.log("PHONE NUMBER NOT FOUND");
+            System.out.println("PHONE NUMBER NOT FOUND");
         }
    }
    
