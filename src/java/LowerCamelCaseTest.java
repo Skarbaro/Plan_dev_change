@@ -12,7 +12,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class LowerCamelCaseTest extends RuleTest {
 	
-	int a = 11;
+	int a = 17;
 
     @Override
     protected String[] getCommandArgs() {
