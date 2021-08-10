@@ -34,6 +34,11 @@ public class DifNumbers {
 
     public int getGameGroupZipCode() {
         return gameGroupZipCode;
+		if(matcher.find()){
+            System.out.println("Phone number: " + matcher.group(1));
+        }else {
+            System.out.println("PHONE NUMBER NOT FOUND");
+        }
     }
    
 }
