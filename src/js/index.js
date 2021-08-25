@@ -1,221 +1,94 @@
-const path = require('path');
-const fs = require('fs');
-const {EventEmitter} = require('events');
-const rimraf = require('rimraf');
+const fse = require('fs-extra')
+const glob = require('glob')
+const { flatMap } = require('./utils')
 
-const downloadHelper = require('./scripts/download-helper.js');
-let downloadPath = path.resolve(__dirname, 'dbs');
-
-const updateTimer = 2 * 24 * 60 * 60 * 1000; // 48 hours in ms
-
-let paths = {
-	'GeoLite2-ASN': path.join(downloadPath, 'GeoLite2-ASN.mmdb'),
-	'GeoLite2-City': path.join(downloadPath, 'GeoLite2-City.mmdb'),
-	'GeoLite2-Country': path.join(downloadPath, 'GeoLite2-Country.mmdb')
-};
-
-class UpdateSubscriber extends EventEmitter {
-	constructor() {
-		super();
-
-		this.downloading = false;
-		this.checking = false;
-
-		this._checker = setInterval(() => {
-			this.checkUpdates();
-		}, updateTimer);
-		this.checkUpdates();
-
-		// Clean up failed download files
-		rimraf(downloadPath+'-tmp', _ => {
-			// folder did not exist
-		});
-
-		return this;
-	}
-
-	async checkUpdates() {
-		if (this.checking) {
-			return;
-		}
-
-		this.checking = true;
-
-		try {
-			// Leave time for listeners to be up
-			await this._wait(200);
-
-			this.emit('checking');
-			try {
-				await downloadHelper.fetchChecksums();
-				await downloadHelper.verifyAllChecksums(downloadPath);
-				this.emit('up-to-date');
-			} catch (ex) {
-				await this.update();
-			};
-		}
-		finally {
-			this.checking = false;
-			this.emit('done checking');
-		}
-	}
-
-	// Backward compat
-	triggerUpdate() {
-		console.warn('geolite2-redist: triggerUpdate() is deprecated');
-		return Promise.resolve();
-	}
-
-	update() {
-		return new Promise(resolve => {
-			if (this.downloading) {
-				resolve(false);
-			}
-
-			this.downloading = true;
-			this.emit('downloading');
-
-			fs.mkdir(downloadPath+'-tmp', () => {
-				downloadHelper.fetchDatabases(downloadPath+'-tmp').then(() => {
-					return downloadHelper.verifyAllChecksums(downloadPath+'-tmp');
-				}).then(() => {
-					rimraf(downloadPath, e => {
-						if (e) throw(e);
-						fs.rename(downloadPath+'-tmp', downloadPath, e => {
-							if (e) throw(e);
-							this.emit('update', downloadHelper.getEditions());
-						});
-					});
-				}).catch(error => {
-					console.warn('geolite2 self-update error:', error);
-					rimraf(downloadPath+'-tmp', _ => {
-						// no junk to clean up
-					});
-				}).finally(() => {
-					this.downloading = false;
-					resolve()
-				});
-			});
-		});
-	}
-
-	close() {
-		clearInterval(this._checker);
-	}
-
-	_wait(x) {
-		return new Promise(resolve => {
-			setTimeout(resolve, x);
-		});
-	}
+function resolveOptions({ files = [] } = {}) {
+  return {
+    files: files.length ? files : ['./mochawesome-report/mochawesome*.json'],
+  }
 }
 
-function wrapReader(reader, readerBuilder, db) {
-	const subscriber = new UpdateSubscriber();
-	subscriber.on('update', async () => {
-		reader = await readerBuilder(paths[db]);
-	});
+const collectSourceFiles = flatMap(pattern => {
+  const files = glob.sync(pattern)
+  if (!files.length) {
+    throw new Error(`Pattern ${pattern} matched no report files`)
+  }
+  return files
+})
 
-	return new Proxy({}, {
-		get: (_, prop) => {
-			switch (prop) {
-				case '_geolite2_triggerUpdateCheck':
-					subscriber.checkUpdates();
-					return 'OK';
-
-				case '_geolite2_triggerUpdate':
-					// Keep this in for backward compat
-					return 'OK';
-
-				case '_geolite2_subscriber':
-					return subscriber;
-
-				case 'close':
-					return () => {
-						subscriber.close();
-						reader = {};
-						return true;
-					};
-
-				default:
-					return reader[prop];
-			}
-		},
-		set: (_, prop, value) => {
-			switch (prop) {
-				case '_geolite2_triggerUpdateCheck':
-				case '_geolite2_triggerUpdate':
-				case '_geolite2_subscriber':
-				case 'close':
-					throw new Error('Invalid property setter');
-
-				default:
-					reader[prop] = value;
-					break;
-			}
-		}
-	});
+function generateStats(suites) {
+  const tests = getAllTests(suites)
+  const passes = tests.filter(test => test.pass)
+  const pending = tests.filter(test => test.pending)
+  const failures = tests.filter(test => test.fail)
+  const skipped = tests.filter(test => test.skipped)
+  return {
+    suites: suites.length,
+    tests: tests.length,
+    passes: passes.length,
+    pending: pending.length,
+    failures: failures.length,
+    start: new Date().toISOString(),
+    end: new Date().toISOString(),
+    duration: tests.map(test => test.duration).reduce((a, b) => a + b, 0),
+    testsRegistered: tests.length,
+    passPercent: (passes.length * 100) / tests.length,
+    pendingPercent: (pending.length * 100) / tests.length,
+    other: 0,
+    hasOther: false,
+    skipped: skipped.length,
+    hasSkipped: !!skipped.length,
+  }
 }
 
-function open(database, readerBuilder) {
-	if (!downloadHelper.getEditions().find(e => e.name === database)) {
-		throw new Error(`No database named ${database}`);
-	}
-
-	if (typeof readerBuilder !== 'function') {
-		throw new TypeError('No database reader provided');
-	}
-
-	const reader = readerBuilder(paths[database]);
-
-	if (typeof reader.then === 'function') {
-		return new Promise(resolve => {
-			reader.then(r => {
-				resolve(wrapReader(r, readerBuilder, database));
-			}).catch(error => {
-				throw error;
-			});
-		});
-	}
-
-	return wrapReader(reader, readerBuilder, database);
+function collectReportFiles(files) {
+  return Promise.all(files.map(filename => fse.readJson(filename)))
 }
 
-function downloadDbs(newpath) {
-	downloadPath = path.resolve(__dirname, 'dbs')
-	if (newpath) downloadPath = path.resolve(newpath);
-	if (!fs.existsSync(downloadPath)) {
-		fs.mkdirSync(downloadPath, { resursive: true })
-	}
-	paths = {
-		'GeoLite2-ASN': path.join(downloadPath, 'GeoLite2-ASN.mmdb'),
-		'GeoLite2-City': path.join(downloadPath, 'GeoLite2-City.mmdb'),
-		'GeoLite2-Country': path.join(downloadPath, 'GeoLite2-Country.mmdb')
-	};
+const collectReportSuites = flatMap(report =>
+  report.results.filter(r => r !== false)
+)
 
-	return new Promise(resolve => {
-		const us = new UpdateSubscriber()
-		us.once('up-to-date', () => {
-			// Databases are already good
-			us.close()
-			resolve()
-		})
-		us.once('update', () => {
-			us.close()
-			resolve()
-		})
-		us.checkUpdates()
-	})
+const getAllTests = flatMap(suite => [
+  ...suite.tests,
+  ...getAllTests(suite.suites),
+])
+
+const getStateTimeSpan = reports => {
+  const spans = reports.map(({ stats: { start, end } }) => {
+    return { start: new Date(start), end: new Date(end) }
+  })
+
+  const maxSpan = spans.reduce(
+    (currentMaxSpan, span) => {
+      const start = new Date(
+        Math.min(currentMaxSpan.start.getTime(), span.start.getTime())
+      )
+      const end = new Date(
+        Math.max(currentMaxSpan.end.getTime(), span.end.getTime())
+      )
+      return { start, end }
+    }
+  )
+
+  return {
+    start: maxSpan.start.toISOString(),
+    end: maxSpan.end.toISOString(),
+  }
 }
 
-module.exports = {
-	open,
-	downloadDbs,
-	UpdateSubscriber,
-	databases: [
-		'GeoLite2-ASN',
-		'GeoLite2-City',
-		'GeoLite2-Country'
-	],
-	downloadPath
-};
+exports.merge = async function merge(options) {
+  options = resolveOptions(options)
+  const files = collectSourceFiles(options.files)
+  const reports = await collectReportFiles(files)
+  const suites = collectReportSuites(reports)
+
+  return {
+    stats: {
+      ...generateStats(suites),
+      ...getStateTimeSpan(reports),
+    },
+    results: suites,
+    meta: reports[0].meta,
+  }
+}
