@@ -29,19 +29,7 @@ public class TCPConnection {
         });
         rxThread.start();
     }
-    
-    public synchronized void disconnect() {
-        rxThread.interrupt();
-        try {
-            socket.close();
-        } catch (IOException e) {
-            eventListener.onException(TCPConnection.this, e);
-        }
-    }
-    @Override
-    public String toString() {
-        return "TCPConnection: " + socket.getInetAddress() + ": " + socket.getPort();
-    }
+
 	public synchronized void disconnect() {
         rxThread.interrupt();
         try {

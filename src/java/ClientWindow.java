@@ -5,9 +5,12 @@ public class AddTwoNumbers {
     private final BufferedReader in;
 
    public static void main(String[] args) {
-      int num1 = 5, num2 = 15, sum;
+      int num1 = 5;
+	  int num2 = 15, sum;
       sum = num1 + num2;
       System.out.println("Sum of these numbers: "+sum);
+	  System.out.println("Sum of these numbers: "+sam);
+	  System.out.println("Sum of these numbers: "+sum);
    }
    public TCPConnection(final TCPConnectionListener eventListener, Socket socket) throws IOException {
         this.eventListener = eventListener;
