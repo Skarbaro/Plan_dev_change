@@ -1,7 +1,3 @@
-import java.io.*;
-import java.net.Socket;
-import java.nio.charset.Charset;
-import java.nio.charset.StandardCharsets;
 public class TCPConnection {
     private final Socket socket;
     private final Thread rxThread;
