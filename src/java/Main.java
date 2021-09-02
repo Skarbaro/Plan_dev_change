@@ -2,10 +2,6 @@ package java;
 
 import com.microsoft.gctoolkit.GCToolKit;
 import com.microsoft.gctoolkit.io.GCLogFile;
-import com.microsoft.gctoolkit.io.SingleGCLogFile;
-import com.microsoft.gctoolkit.jvm.JavaVirtualMachine;
-import com.microsoft.gctoolkit.sample.aggregation.HeapOccupancyAfterCollectionAggregation;
-import com.microsoft.gctoolkit.sample.aggregation.HeapOccupancyAfterCollectionSummary;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,6 +14,8 @@ public class Main {
         }        
         Main main = new Main();
         main.execute(args[0]);
+		int a = 14;
+		int b = 17;
     }
 
     public void execute(String gcLogFilePath) {
