@@ -16,6 +16,28 @@ const collectSourceFiles = flatMap(pattern => {
   return files
 })
 
+test('read float', function (t) {
+  const val = 42.42
+  const buf = Buffer.alloc(4)
+
+  buf.writeFloatLE(val, 0)
+  const num = ieee754.read(buf, 0, true, 23, 4)
+
+  t.ok(Math.abs(num - val) < EPSILON)
+  t.end()
+})
+
+test('write float', function (t) {
+  const val = 42.42
+  const buf = Buffer.alloc(4)
+
+  ieee754.write(buf, val, 0, true, 23, 4)
+  const num = buf.readFloatLE(0)
+
+  t.ok(Math.abs(num - val) < EPSILON)
+  t.end()
+})
+
 function generateStats(suites) {
   const tests = getAllTests(suites)
   const passes = tests.filter(test => test.pass)
