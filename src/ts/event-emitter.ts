@@ -33,4 +33,20 @@ export default abstract class RinzlerEventEmitter {
 			})
 		}
 	}
+	export function useGroupHeader (props: DataTableSetupProps): {
+  rowsRef: ComputedRef<RowItem[][]>
+  colsRef: ComputedRef<ColItem[]>
+  hasEllipsisRef: ComputedRef<boolean>
+  dataRelatedColsRef: ComputedRef<
+  Array<TableSelectionColumn | TableBaseColumn | TableExpandColumn>
+  >
+} {
+  const rowsAndCols = computed(() => getRowsAndCols(props.columns))
+  return {
+    rowsRef: computed(() => rowsAndCols.value.rows),
+    colsRef: computed(() => rowsAndCols.value.cols),
+    hasEllipsisRef: computed(() => rowsAndCols.value.hasEllipsis),
+    dataRelatedColsRef: computed(() => rowsAndCols.value.dataRelatedCols)
+  }
+}
 }
